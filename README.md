@@ -123,6 +123,73 @@ De momento definremos el usuario de la siguiente manera para más adelante traba
 
 ### NOTA: EL ORDEN DE LAS URLS SI IMPORTA, LOS PATH QUE NO TIENEN SLUG U OTRO IDENTIFICADOR DEBEN IR ANTES DE LOS QUE SI LO TIENEN
 
+* Cuando implemantamos la view del create nos dará un error si no le pasamos los campos que pueden actualizarce, para ello modificamos el código de la siguiente manera:
 
+![image](https://user-images.githubusercontent.com/84333525/141043886-5cea5078-ad2a-49f5-8795-297bc2320d4f.png)
+
+* Cuando usamos el view para el delete tenemos que obligatoriamente pasarle un success_url sino obtenemos un error:
+
+![image](https://user-images.githubusercontent.com/84333525/141044448-74df53e1-d88c-4493-bc82-8a907dd15b09.png)
+
+* Cuando usamos la vista create sino le especificamos los campos nos retorna un error como el siguiente:
+
+![image](https://user-images.githubusercontent.com/84333525/141045286-3c656acd-75f7-4141-892f-c6436beb3913.png)
+
+Por lo que debemos modificar la vista del create de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/84333525/141045739-fc158718-8ed1-480f-81d9-54a3fdc34180.png)
+
+### CREAR LOS FORMULARIOS
+* Para ello nos ubicamos en el directorio de la app de posts en este caso y creamos el archivo *forms.py*
+* Hacemos las importaciones necesarias
+* Cuando definimos la clase del formulario necesitamos definir la clase de *Meta*
+
+![image](https://user-images.githubusercontent.com/84333525/141046155-05e61f3c-bb53-4f40-8b44-aeef1e23628a.png)
+
+dónde definimos el modelo con el que estaremos trabajando además de los campos del mismo, en este ejemplo mirar que entre comillas utilizamos __all__ lo que significa que traerá todos los campos del modelo.
+
+* Una vez implementado el modelo del formulario podemos trabajar con el en la vista, para ello primero lo importamos.
+* Y seguidamente podemos usar el atributo form_class del Update y Create para poder trabajar con el formulario que hemos creado:
+
+![image](https://user-images.githubusercontent.com/84333525/141046633-811e908d-f870-4a2c-8dc1-aeed3aa1ac42.png)
+
+ * Luego de los pasos anteriores ya podemos modificar el archivo *post_form.html* creando un formulario vinculado a la clase formulario que hemos creado:
+
+Los create / update o cualquier otro metodo que envíe información al servidor o que maneje iformación debe estar en etiquetas form como muestro en el siguiete ejemplo:
+
+recordar siempre que es buena práctica de seguridad usar *csrf* en todos los formularios y además en este ejemlpo usamos la etiqueta *view_type* que nos mostrará que acción estamos realizando, recordar que es el mismo formulario para el create y el update.
+
+![image](https://user-images.githubusercontent.com/84333525/141048038-817002e2-bffe-4d5f-8755-acec6e7419bd.png)
+
+Otra cosa a tener en cuenta si hacemos las implementaciones así es que como ya estamos vinculando el formulario con sus respectivos campos, y tener al mismo tiempo los campos definidos en el view podemos obtener un error de la siguiente forma
+
+![image](https://user-images.githubusercontent.com/84333525/141048182-b4337e6d-b115-44de-bdd9-266eda640239.png)
+
+Para solucionar solo debemos borrar los campos y dejarlos de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/84333525/141048233-45636620-9cb2-4607-a86e-ea86ea64b648.png)
+
+* Luego para trabajar con el contexto definimos una función *get_context_data()* el cual modificamos para poder retornar a la vista (html) que acción estamos ejecutando.
+
+* Con el filtro *|title* logramos capitalizar la palabra a la que le pongamos.
+
+![image](https://user-images.githubusercontent.com/84333525/141048810-6ed7fd6e-f572-4cfa-b4ef-d1bd834b07d7.png)
+
+* Importante también es definirle que tipo de datos estaremos manejando en el formulario:
+
+![image](https://user-images.githubusercontent.com/84333525/141048942-f4e6aaa7-e0e1-4c08-8745-8f623d0efeaa.png)
+
+## UN POCO DE MANEJO DE ESTILOS :)
+A partir del minuto 3H:40M o un poco antes, me parece genial para hacer estilizar algunos ejemplos rápidos para entrevistas o algo así.
+
+### Nota en el siguiente código muestro como puedo ver los detalles de los elementos de la lista, esto es super importante:
+
+![image](https://user-images.githubusercontent.com/84333525/141053797-191e1f2c-a0bc-400a-8bb0-5cd3b254fd0d.png)
+
+Debo crear el método get_absolute_url(self): --> le defino la página dónde se visualizaran los detalles y le paso como paámetro lo que espera la vita de detalles en este caso el slug para que pueda encontrar el elemento sobre el que estamos ejecutando la acción
+
+![image](https://user-images.githubusercontent.com/84333525/141054054-cb1656e7-8c36-4901-b3e8-898ce1ebef70.png)
+
+Modifico el link del html para que me lleve a la dirección deseada.
 
 
