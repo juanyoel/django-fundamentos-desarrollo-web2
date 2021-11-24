@@ -192,4 +192,67 @@ Debo crear el método get_absolute_url(self): --> le defino la página dónde se
 
 Modifico el link del html para que me lleve a la dirección deseada.
 
+### AGREGAR CANTIDAD DE VISTAS COMENTARIOS Y LIKES A UN POST DETERMINADO
+* Lo primero que hacemos es agregar el código html dónde ubicaremos el código
+
+![image](https://user-images.githubusercontent.com/84333525/143312228-0fa5dd5d-fd2c-4b37-b555-c305f51d2285.png)
+
+* Luego para estilizar un poco le agregamos icónos, para ello vamos a la página de fontawesome y seguimos las instrucciones.
+* Luego de obtener la url de fontawesome la agregamos al proyecto en el archivo base.html
+
+![image](https://user-images.githubusercontent.com/84333525/143312683-a7357e75-a7ae-4759-a819-e2d378740e80.png)
+
+### SUPER IMPORTANTE ESTE PASO PARA CALCULAR LAS CANTIDADES DE VIEWS, COMMENTS Y LIKES
+* Para ello modificamos el modelo de Post y le adicionamos las siguientes propiedades:
+
+![image](https://user-images.githubusercontent.com/84333525/143313476-91a423ca-9365-42e4-9339-baae164aea35.png)
+
+* Los nombres de los atributos a los que se hace referencia es debido a que cada uno de los modelos tiene una relación con el modelo Post, por eso es que se pueden acceder de esa manera: 
+
+![image](https://user-images.githubusercontent.com/84333525/143313603-313dabc6-e2b2-43b9-a70e-8cc5b73584d3.png)
+
+* Luego pasamos a vincular las nuevas propiedades creadas con el código html y de paso le pasamos los iconos importados de font awesome.
+
+![image](https://user-images.githubusercontent.com/84333525/143314535-86395bfb-724c-4b42-9fa9-81ac94d3ff98.png)
+
+* Luego podemos adicionar si queremos cuando fue posteado y lo hacemos de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/84333525/143314982-32c2e5a5-cec9-493e-9d82-3baba6efc832.png)
+
+### ESTILIZAR EL POST DETAIL VIEW
+* Le agregamos toda la información que manejamos de los post a la página de detalles como ya hemos hecho antes en la lista.
+* #### Ahora queremos darle funcionalidad al botón de dar like:
+
+![image](https://user-images.githubusercontent.com/84333525/143316174-a93a8321-5ec9-4d88-bf1f-a1d97c7c9b17.png)
+
+* Primero hacemos la función que nos permitirá verificar que existe el elemento sino retornará un error (para ello utilizamos el método get_object_or_404) luego verificamos si ya se le ha dado like o no, el método completo quedaría de la siguiente forma:
+
+![image](https://user-images.githubusercontent.com/84333525/143317328-6d486bdb-3844-4d4f-92b9-3de7472e3d2b.png)
+
+* Agregamos la nueva función al archivo *urls.py* :
+
+![image](https://user-images.githubusercontent.com/84333525/143317682-fb1814e4-dcf5-4945-ad30-a194a76d6527.png)
+
+* Luego en los modelos podemos definir un método igual a get_absolute_url pero para los likes:
+
+![image](https://user-images.githubusercontent.com/84333525/143317957-1b96a780-3cb8-4dfc-bdf2-d18c57b18dfa.png)
+
+* Luego vinculamos la función directamente con la vista (html):
+
+![image](https://user-images.githubusercontent.com/84333525/143318335-925b5ee0-0f31-448c-95fa-2f73f67f34fc.png)
+
+* #### DARLE FUNCIONALIDAD A LAS VISTAS QUE HA TENIDO EL POST
+* Simplemente le agregamos la siguiente función a la clase PostDetailView:
+
+![image](https://user-images.githubusercontent.com/84333525/143319261-d66e855d-e154-4742-82ec-0a1ff513cb3f.png)
+
+### AGREGAR COMENTARIOS
+* Lo primero que hacemos es crear el formulario, para ello vamos al archivo *forms.py* y lo creamos de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/84333525/143319744-3f88ba11-2df1-463b-823e-a4e533999b4e.png)
+
+* Luego nos ubicamos en nuestro archivo *views.py* e importamos el formulario que hemos creado.
+* 
+
+
 
