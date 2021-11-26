@@ -252,7 +252,30 @@ Modifico el link del html para que me lleve a la dirección deseada.
 ![image](https://user-images.githubusercontent.com/84333525/143319744-3f88ba11-2df1-463b-823e-a4e533999b4e.png)
 
 * Luego nos ubicamos en nuestro archivo *views.py* e importamos el formulario que hemos creado.
-* 
+
+#### ESITLO A LOS FORMULARIOS
+* Vamos usar un paquete llamado django-crispy-forms, que instalamos usando el comando *pip install django-crispy-forms*
+* Lo agregamos a las APPS instaladas en el archivo *settings.py*
+* Le definimos de donde vamos a usar los templates (toda esta info se puede obtener en la documentación de la librería)
+
+![image](https://user-images.githubusercontent.com/84333525/143627060-022fbf25-e95a-4a43-9632-514d4f020d9c.png)
+
+* Se lo agregamos al archivo HTML
+
+![image](https://user-images.githubusercontent.com/84333525/143627166-784ca0f5-00d1-4f86-abf6-f186937165ca.png)
+
+* Cambiamos el código del formulario:
+
+![image](https://user-images.githubusercontent.com/84333525/143627227-a036c523-2a69-4858-9b22-d71e1820c304.png)
+
+* Si queremos estilizar un poco el text area como por ejemplo darle un poco menos de tamaño por defecto lo hacemos de la siguiente manera:
+
+![image](https://user-images.githubusercontent.com/84333525/143627661-ca822114-0260-4700-88d9-454778a633a1.png)
+
+* Hice lo mismo para el formualrio del create.
+
+## TIPS
+* Para cambiar la contraseña de un usuario como un admin podemos usar el siguiente comando: *python.exe manage.py changepassword admin*
 
 
 
